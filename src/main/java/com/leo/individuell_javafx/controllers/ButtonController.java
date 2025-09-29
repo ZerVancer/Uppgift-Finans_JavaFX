@@ -23,11 +23,10 @@ public class ButtonController {
   private TextField amountField;
 
 
-  private static String username;
   public static boolean deposit;
 
   public void submitUsernameButton(ActionEvent e) throws IOException {
-    username = usernameField.getText();
+    String username = usernameField.getText();
     UserData.initialiseUser(username);
     UserData.setWallet(username);
     SceneController.switchToMenu(e);

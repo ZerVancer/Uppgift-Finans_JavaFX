@@ -28,14 +28,6 @@ public class Main extends Application {
       stage.show();
 
     } catch (NullPointerException e) { System.out.println("missing fxml file"); }
-
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(1)));
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(1)));
-//    wallet.addTransaction(new Transaction(-999, LocalDateTime.now().minusYears(1)));
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(2)));
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(3)));
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(4)));
-//    wallet.addTransaction(new Transaction(999, LocalDateTime.now().minusYears(4).plusWeeks(2)));
   }
 
   public static void main(String[] args) { launch(); }

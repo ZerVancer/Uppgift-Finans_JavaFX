@@ -26,9 +26,6 @@ public class TableButtonController {
   public static Period period;
 
   public void writeTable() {
-    if (tableView == null) {
-      return;
-    }
     yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
     amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
