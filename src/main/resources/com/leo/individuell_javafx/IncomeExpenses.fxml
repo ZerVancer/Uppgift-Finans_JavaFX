@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.leo.individuell_javafx.controllers.ButtonController">
+   <children>
+      <Button fx:id="YearlyButton" layoutX="79.0" layoutY="64.0" mnemonicParsing="false" onAction="#yearly" text="Yearly">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="MonthlyButton" layoutX="417.0" layoutY="64.0" mnemonicParsing="false" onAction="#monthly" text="Montly">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="WeeklyButton" layoutX="79.0" layoutY="179.0" mnemonicParsing="false" onAction="#weekly" text="Weekly">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="DailyButton" layoutX="417.0" layoutY="179.0" mnemonicParsing="false" onAction="#daily" text="Daily">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnButton" layoutX="248.0" layoutY="296.0" mnemonicParsing="false" onAction="#goBack" text="Return">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
