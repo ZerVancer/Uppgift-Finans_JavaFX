@@ -1,6 +1,5 @@
 package com.leo.individuell_javafx.controllers;
 
-import com.leo.individuell_javafx.Period;
 import com.leo.individuell_javafx.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,22 +10,33 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ButtonController {
+public class MenuButtonController {
 
   @FXML
   private AnchorPane scenePane;
   @FXML
   private TextField usernameField;
   @FXML
+  private Label usernameErrorText;
+  @FXML
   private Label balance;
   @FXML
   private TextField amountField;
+  @FXML
+  private Label responseLabel;
 
 
   public static boolean deposit;
 
   public void submitUsernameButton(ActionEvent e) throws IOException {
     String username = usernameField.getText();
+    char[] invalidChars = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
+    for (int i = 0; i < username.length(); i++)
+      for (char c : invalidChars)
+        if (username.charAt(i) == c) {
+        usernameErrorText.setText("Invalid character used: '" + c + "'");
+        return;
+      }
     UserData.initialiseUser(username);
     UserData.setWallet(username);
     SceneController.switchToMenu(e);
@@ -56,41 +66,27 @@ public class ButtonController {
     SceneController.switchToIncome(e);
   }
 
-  public void yearly(ActionEvent e) throws IOException {
-    TableButtonController.period = Period.YEARLY;
-    SceneController.switchToYearly(e);
-  }
-
-  public void monthly(ActionEvent e) throws IOException {
-    TableButtonController.period = Period.MONTHLY;
-    SceneController.switchToPeriodic(e);
-  }
-
-  public void weekly(ActionEvent e) throws IOException {
-    TableButtonController.period = Period.WEEKLY;
-    SceneController.switchToPeriodic(e);
-  }
-
-  public void daily(ActionEvent e) throws IOException {
-    TableButtonController.period = Period.DAILY;
-    SceneController.switchToPeriodic(e);
-  }
-
   public void goBack(ActionEvent e) throws IOException {
     SceneController.switchToMenu(e);
   }
 
-  public void depositAmount(ActionEvent e) {
+  public void depositWithdrawAmount(ActionEvent e) {
     try {
       int amount = Integer.parseInt(amountField.getText());
       if (amount > 0) {
-        if (deposit) UserData.wallet.createTransaction(amount, 1);
-        else UserData.wallet.createTransaction(amount, -1);
+        if (deposit) {
+          UserData.wallet.createTransaction(amount, 1);
+          responseLabel.setText("Deposited: " + amount);
+        }
+        else {
+          UserData.wallet.createTransaction(amount, -1);
+          responseLabel.setText("Withdrawn " + amount);
+        }
       } else {
-        System.out.println("Requires a number over 0");
+        responseLabel.setText("Must be more than zero");
       }
     } catch (Exception ex) {
-      System.out.println("Invalid number");
+      responseLabel.setText("Invalid number");
     }
   }
 

@@ -2,12 +2,9 @@ package com.leo.individuell_javafx.data;
 
 import com.leo.individuell_javafx.Period;
 import com.leo.individuell_javafx.UserData;
-import com.leo.individuell_javafx.controllers.ButtonController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Parent;
 
-import java.time.LocalDateTime;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;

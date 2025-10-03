@@ -32,18 +32,18 @@ public class TableButtonController {
     ObservableList<PeriodicExpensesAndIncome> list;
     if (period != Period.YEARLY) periodColumn.setCellValueFactory(new PropertyValueFactory<>("period"));
     list = switch (period) {
-      case YEARLY -> UserData.wallet.getIncomeOrExpenses(Period.YEARLY, ButtonController.deposit);
+      case YEARLY -> UserData.wallet.getIncomeOrExpenses(Period.YEARLY, MenuButtonController.deposit);
       case MONTHLY -> {
         periodColumn.setText("Month");
-        yield UserData.wallet.getIncomeOrExpenses(Period.MONTHLY, ButtonController.deposit);
+        yield UserData.wallet.getIncomeOrExpenses(Period.MONTHLY, MenuButtonController.deposit);
       }
       case WEEKLY -> {
         periodColumn.setText("Week");
-        yield UserData.wallet.getIncomeOrExpenses(Period.WEEKLY, ButtonController.deposit);
+        yield UserData.wallet.getIncomeOrExpenses(Period.WEEKLY, MenuButtonController.deposit);
       }
       case DAILY -> {
         periodColumn.setText("Day");
-        yield UserData.wallet.getIncomeOrExpenses(Period.DAILY, ButtonController.deposit);
+        yield UserData.wallet.getIncomeOrExpenses(Period.DAILY, MenuButtonController.deposit);
       }
     };
     tableView.setItems(list);

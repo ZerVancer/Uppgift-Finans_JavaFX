@@ -19,21 +19,17 @@ public class UserData {
     return new File("src\\main\\java\\com\\leo\\individuell_javafx\\users\\"+username+".txt");
   }
 
-  public static void initialiseUser(String username) {
+  public static void initialiseUser(String username) throws IOException {
     if (!getFilePath(username).exists()) {
       createUser(username);
     }
   }
 
-  private static void createUser(String username) {
+  private static void createUser(String username) throws IOException {
     FileWriter writer;
-    try {
-      writer = new FileWriter(getFilePath(username));
-      writer.write(username + "\n" + 0);
-      writer.close();
-    } catch (IOException e) {
-      System.out.println("Filepath error");
-    }
+    writer = new FileWriter(getFilePath(username));
+    writer.write(username + "\n" + 0);
+    writer.close();
   }
 
   public static Wallet readUser(String username) {
